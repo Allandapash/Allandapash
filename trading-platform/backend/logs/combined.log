@@ -1,0 +1,7 @@
+{"level":"info","message":"🚀 ALALIZ.COM Trading Platform API running on port 5000 in development mode","timestamp":"2025-07-29T14:22:03.042Z"}
+{"level":"info","message":"📊 Advanced Trading Platform - Empowering Your Investment Journey","timestamp":"2025-07-29T14:22:03.044Z"}
+{"level":"info","message":"🚀 ALALIZ.COM Trading Platform API running on port 5000 in development mode","timestamp":"2025-07-29T14:22:10.214Z"}
+{"level":"info","message":"📊 Advanced Trading Platform - Empowering Your Investment Journey","timestamp":"2025-07-29T14:22:10.215Z"}
+{"level":"info","message":"GET /health - ::1","timestamp":"2025-07-29T14:22:15.803Z"}
+{"level":"info","message":"GET /api/market/prices - ::1","timestamp":"2025-07-29T14:22:19.994Z"}
+{"level":"info","message":"POST /api/auth/register - ::1","timestamp":"2025-07-29T14:22:40.568Z"}

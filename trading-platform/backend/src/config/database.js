@@ -8,7 +8,7 @@ const config = {
     port: process.env.DB_PORT || 5432,
     user: process.env.DB_USER || 'postgres',
     password: process.env.DB_PASSWORD || 'password',
-    database: process.env.DB_NAME || 'trading_platform',
+    database: process.env.DB_NAME || 'alaliz_trading_platform',
     ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
   },
   pool: {
@@ -31,10 +31,10 @@ const db = knex(config);
 // Test database connection
 db.raw('SELECT 1')
   .then(() => {
-    console.log('Database connection established successfully');
+    console.log('🔗 ALALIZ.COM - Database connection established successfully');
   })
   .catch((err) => {
-    console.error('Database connection failed:', err);
+    console.error('❌ ALALIZ.COM - Database connection failed:', err);
     process.exit(1);
   });
 

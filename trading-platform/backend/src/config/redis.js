@@ -21,19 +21,19 @@ const client = redis.createClient({
 });
 
 client.on('connect', () => {
-  console.log('Redis client connected');
+  console.log('🔗 ALALIZ.COM - Redis client connected');
 });
 
 client.on('error', (err) => {
-  console.error('Redis client error:', err);
+  console.error('❌ ALALIZ.COM - Redis client error:', err);
 });
 
 client.on('ready', () => {
-  console.log('Redis client ready');
+  console.log('✅ ALALIZ.COM - Redis client ready');
 });
 
 client.on('reconnecting', () => {
-  console.log('Redis client reconnecting');
+  console.log('🔄 ALALIZ.COM - Redis client reconnecting');
 });
 
 // Connect to Redis
@@ -45,7 +45,7 @@ const redisHelpers = {
     try {
       return await client.get(key);
     } catch (error) {
-      console.error('Redis GET error:', error);
+      console.error('ALALIZ.COM - Redis GET error:', error);
       return null;
     }
   },
@@ -54,7 +54,7 @@ const redisHelpers = {
     try {
       return await client.setEx(key, ttl, value);
     } catch (error) {
-      console.error('Redis SET error:', error);
+      console.error('ALALIZ.COM - Redis SET error:', error);
       return false;
     }
   },
@@ -63,7 +63,7 @@ const redisHelpers = {
     try {
       return await client.del(key);
     } catch (error) {
-      console.error('Redis DEL error:', error);
+      console.error('ALALIZ.COM - Redis DEL error:', error);
       return false;
     }
   },
@@ -72,7 +72,7 @@ const redisHelpers = {
     try {
       return await client.exists(key);
     } catch (error) {
-      console.error('Redis EXISTS error:', error);
+      console.error('ALALIZ.COM - Redis EXISTS error:', error);
       return false;
     }
   },
@@ -81,7 +81,7 @@ const redisHelpers = {
     try {
       return await client.hSet(key, field, value);
     } catch (error) {
-      console.error('Redis HSET error:', error);
+      console.error('ALALIZ.COM - Redis HSET error:', error);
       return false;
     }
   },
@@ -90,7 +90,7 @@ const redisHelpers = {
     try {
       return await client.hGet(key, field);
     } catch (error) {
-      console.error('Redis HGET error:', error);
+      console.error('ALALIZ.COM - Redis HGET error:', error);
       return null;
     }
   },
@@ -99,7 +99,7 @@ const redisHelpers = {
     try {
       return await client.hGetAll(key);
     } catch (error) {
-      console.error('Redis HGETALL error:', error);
+      console.error('ALALIZ.COM - Redis HGETALL error:', error);
       return {};
     }
   }

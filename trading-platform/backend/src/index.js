@@ -78,9 +78,12 @@ app.use((req, res, next) => {
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({ 
+    platform: 'ALALIZ.COM',
+    service: 'Trading Platform API',
     status: 'healthy', 
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    version: '1.0.0'
   });
 });
 
@@ -94,6 +97,7 @@ app.use('/api/portfolio', portfolioRoutes);
 app.use((error, req, res, next) => {
   logger.error(error);
   res.status(error.status || 500).json({
+    platform: 'ALALIZ.COM',
     error: error.message || 'Internal server error',
     ...(process.env.NODE_ENV === 'development' && { stack: error.stack })
   });
@@ -101,24 +105,27 @@ app.use((error, req, res, next) => {
 
 // 404 handler
 app.use('*', (req, res) => {
-  res.status(404).json({ error: 'Route not found' });
+  res.status(404).json({ 
+    platform: 'ALALIZ.COM',
+    error: 'Route not found' 
+  });
 });
 
 // WebSocket for real-time updates
 io.on('connection', (socket) => {
-  logger.info(`Client connected: ${socket.id}`);
+  logger.info(`ALALIZ.COM - Client connected: ${socket.id}`);
   
   socket.on('subscribe', (data) => {
     const { symbols, userId } = data;
     if (symbols && Array.isArray(symbols)) {
       const room = `market-${symbols.join('-')}`;
       socket.join(room);
-      logger.info(`Socket ${socket.id} subscribed to ${room}`);
+      logger.info(`ALALIZ.COM - Socket ${socket.id} subscribed to ${room}`);
     }
     
     if (userId) {
       socket.join(`user-${userId}`);
-      logger.info(`Socket ${socket.id} joined user room: user-${userId}`);
+      logger.info(`ALALIZ.COM - Socket ${socket.id} joined user room: user-${userId}`);
     }
   });
   
@@ -127,35 +134,36 @@ io.on('connection', (socket) => {
     if (symbols && Array.isArray(symbols)) {
       const room = `market-${symbols.join('-')}`;
       socket.leave(room);
-      logger.info(`Socket ${socket.id} unsubscribed from ${room}`);
+      logger.info(`ALALIZ.COM - Socket ${socket.id} unsubscribed from ${room}`);
     }
   });
   
   socket.on('disconnect', (reason) => {
-    logger.info(`Client disconnected: ${socket.id}, reason: ${reason}`);
+    logger.info(`ALALIZ.COM - Client disconnected: ${socket.id}, reason: ${reason}`);
   });
 });
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
-  logger.info('SIGTERM received, shutting down gracefully');
+  logger.info('ALALIZ.COM - SIGTERM received, shutting down gracefully');
   server.close(() => {
-    logger.info('Process terminated');
+    logger.info('ALALIZ.COM - Process terminated');
     process.exit(0);
   });
 });
 
 process.on('SIGINT', () => {
-  logger.info('SIGINT received, shutting down gracefully');
+  logger.info('ALALIZ.COM - SIGINT received, shutting down gracefully');
   server.close(() => {
-    logger.info('Process terminated');
+    logger.info('ALALIZ.COM - Process terminated');
     process.exit(0);
   });
 });
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
-  logger.info(`Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+  logger.info(`🚀 ALALIZ.COM Trading Platform API running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+  logger.info(`📊 Advanced Trading Platform - Empowering Your Investment Journey`);
 });
 
 module.exports = { app, io };

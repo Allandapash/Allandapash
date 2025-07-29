@@ -1,5 +1,7 @@
+-- ALALIZ.COM Trading Platform Database Schema
+-- Advanced Trading Platform - Empowering Your Investment Journey
 -- Create database (run this manually if needed)
--- CREATE DATABASE trading_platform;
+-- CREATE DATABASE alaliz_trading_platform;
 
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
